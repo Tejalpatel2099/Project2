@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hiking Adventure</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </head>
+  <body>
+    
+    <main>
+      
+      <div class="card-container">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+        <div class="card">
+          <div class="card-content">
+            <img
+              class="card-image"
+              src="./hike.png"
+              alt="Hike List"
+            />
+            <div class="card-text">
+              <div class="tag-heart-container">
+                <div class="tag">Love Hiking</div>
+                <i class="fas fa-hiking"></i> Hiking Adventure
+              
+              </div>
+              <h3 class="card-title">
+                The Washington State Hiking List
+              </h3>
+              <p class="card-subtitle">By: Tejal Patel</p>
+              <div class="star-rating">
+                <span class="rating-value">4.9</span>
+                <span class="rating-count">(6,637)</span>
+              </div>
+              <p class="views" id="view-count">Views: 0</p>
+            </div>
+            <button class="card-button" onclick="downloadPDF()">
+              <span>Download Hiking List</span>
+            </button>
+            
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Increment view count on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        let views = localStorage.getItem('viewCount') || 0;
+        views++;
+        localStorage.setItem('viewCount', views);
+        document.getElementById('view-count').textContent = 'Views: ' + views;
+      });
+
+      // Like button functionality
+      let liked = false;
+      function likeCard() {
+        const heartIcon = document.getElementById('heart-icon');
+        if (!liked) {
+          heartIcon.src = 'heart-filled.png';  // Replace with filled heart icon
+          liked = true;
+        } else {
+          heartIcon.src = 'heart.png';  // Revert to the original heart icon
+          liked = false;
+        }
+      }
+
+      // Function to download the hiking list PDF
+      function downloadPDF() {
+        window.location.href = './Hiking Adventures in Washington State.pdf';  // Adjust the path to your PDF file
+      }
+    </script>
+  </body>
+</html>
